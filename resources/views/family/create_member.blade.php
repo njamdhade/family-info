@@ -68,18 +68,18 @@
                             @endif
                         </div>
 
-
                         <div class="mb-3">
                             <label for="" class="col-lg-12 mb-3 font-bold">Marital Status*</label>
-                            <label for="unmarried_id" class=""><input type="radio" id="unmarried_id"
-                                    name="marital_status" value="Unmarried" checked="checked"> Unmarried</label>
-                            <label for="married_id" class=""> <input type="radio" id="married_id"
+                            <label for="unmarried_id" class=" mr-4 p-2 border rounded-md hover:bg-slate-200"><input type="radio" id="unmarried_id"
+                                name="marital_status" value="Unmarried" checked="checked"> Unmarried</label>
+                            <label for="married_id" class="p-2 border rounded-md hover:bg-slate-200"> <input type="radio" id="married_id"
                                     name="marital_status" value="Married"> Married </label>
-
+                          
                             @if ($errors->has('marital_status'))
                                 <div class="alert alert-sm alert-danger">{{ $errors->first('marital_status') }}</div>
                             @endif
                         </div>
+                         
 
                         <div id="wedding-date-section" class="mb-3" style="display: none">
                             <label for="wedding_date" class="form-label">Wedding Date</label>

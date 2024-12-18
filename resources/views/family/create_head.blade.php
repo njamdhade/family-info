@@ -50,7 +50,7 @@
 
                     <div class="mb-3">
                         <label for="mobile_no" class="form-label">Mobile Number*</label>
-                        <input type="text" id="mobile_no" name="mobile_no" value="{{ old('mobile_no') }}"
+                        <input maxlength="10" type="text" id="mobile_no" name="mobile_no" value="{{ old('mobile_no') }}"
                             class="form-control">
                         @if ($errors->has('mobile_no'))
                             <div class="alert alert-sm alert-danger">{{ $errors->first('mobile_no') }}</div>
@@ -91,7 +91,7 @@
 
                     <div class="mb-3">
                         <label for="pincode" class="form-label">Pincode*</label>
-                        <input type="text" id="pincode" name="pincode" value="{{ old('pincode') }}"
+                        <input maxlength="6" type="text" id="pincode" name="pincode" value="{{ old('pincode') }}"
                             class="form-control">
                         @if ($errors->has('pincode'))
                             <div class="alert alert-sm alert-danger">{{ $errors->first('pincode') }}</div>

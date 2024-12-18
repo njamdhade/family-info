@@ -31,7 +31,7 @@
                     
                     <!-- Display Member Count -->
                     <div class="mt-4">
-                        <span class="text-lg font-semibold text-blue-600">Members:  <a href="{{ route('family.head.show', $familyHead->id) }}" class="text-blue-500 hover:text-blue-700 font-bold text-sm">{{ $familyHead->family_members_count }}</a></span>
+                        <span class="text-lg font-semibold text-blue-600">Members:  <a href="{{ route('family.head.show', $familyHead->id) }}" class="text-white hover:text-blue-100 font-medium text-md bg-slate-800 hover:bg-red-800 rounded-full px-2">{{ $familyHead->family_members_count }}</a></span>
                     </div>
                   
                 </div>
