@@ -10,11 +10,13 @@
         {{ $message }}
     </div>
 @endif
-    <div class="card mb-4 w-6/12">
+    <div class="card mb-4 w-8/12">
         <div class="card-header flex justify-between items-center">
             <h3 class="text-xl font-medium capitalize">{{ $familyHead->name }} {{ $familyHead->surname }}'s Details</h3>
-            <a class="btn py-2 px-3 bg-lime-600 hover:bg-lime-800 text-white " href="{{ route('family.member.create',  $familyHead->id) }}"><i class="fa fa-users"></i> Add New Famil Member</a>
- 
+            <div>
+                <a class="btn py-2 px-3 bg-lime-600 hover:bg-lime-800 text-white " href="{{ route('family.member.create',  $familyHead->id) }}"><i class="fa fa-users"></i> Add New Family Member</a>
+                <a class="btn ms-2 py-2 px-3 bg-blue-600 hover:bg-blue-800 text-white " href="{{ route('family.head.index') }}"><i class="fa fa-home"></i> Home</a>
+            </div>
         </div>
         <div class="card-body flex gap-2 flex-column">
             <div class="flex justify-start items-start mb-6">
@@ -60,7 +62,7 @@
                         <tr style="vertical-align:middle;">
                             <td align="center">
                                 @if($member->photo)
-                                    <img class="rounded rounded-2xl" src="{{ asset('storage/' . $member->photo) }}" alt="Photo" width="75" height="75">
+                                    <img class="rounded rounded-2xl" src="{{ asset('storage/' . $member->photo) }}" onerror="this.onerror=null;this.src='{{ $member->photo }}';" alt="Photo" width="75" height="75">
                                 @else
                                 <div class="h-16 w-16 rounded-full bg-gray-300 flex items-center justify-center">
                                     <span class="text-white text-md text-center">No Image</span>
@@ -70,7 +72,7 @@
                             <td>{{ $member->name }}</td>
                             <td>{{  \Carbon\Carbon::parse($member->m_birth_date)->format('d-m-Y') }} </td>
                             <td>{{ ucfirst($member->marital_status) }}</td>
-                            <td>{{ $member->wedding_date ?? 'N/A' }}</td>
+                            <td> {{  \Carbon\Carbon::parse($member->wedding_date)->format('d-m-Y') ?? 'N/A' }}</td>
                             <td>{{ $member->education }}</td>
                         </tr>
                         @endforeach

@@ -121,7 +121,7 @@
                     <div class="mb-3 hobby-field">
                         <label class="form-label">Hobbies*</label>
                         <input type="text" name="hobbies[]" class="form-control">
-                        <button type="button" class="btn btn-primary mt-2 add-hobby-btn">Add Hobby</button>
+                        <button type="button" class="btn btn-primary mt-2 add-hobby-btn">+ more</button>
                         @if ($errors->has('hobbies'))
                             <div class="alert alert-sm alert-danger">{{ $errors->first('hobbies') }}</div>
                         @endif

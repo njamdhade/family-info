@@ -19,12 +19,12 @@
         <div class="container">
           <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-              <i class="fa fa-sitemap fa-2x mr-3" aria-hidden="true"></i>
+              <i class="fa fa-sitemap fa-2x mr-3 caret-purple-600" aria-hidden="true"></i>
             </a>
     
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="{{ route('family.head.index')}}" class="nav-link px-2 text-secondary">Home</a></li>
-              <li><a href="{{ route('family.head.create')}}" class="nav-link px-2 text-secondary">Add New family</a></li>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 gap-3">
+              <li><a href="{{ route('family.head.index')}}" class="nav-link px-2 text-white"><i class="fa fa-home"></i> Home</a></li>
+              <li><a href="{{ route('family.head.create')}}" class="nav-link px-2 text-white"><i class="fa fa-user-plus"></i>  Add New family</a></li>
               
             </ul>
     

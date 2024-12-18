@@ -8,14 +8,16 @@ use Illuminate\Http\Request;
  
 class FamilyHeadController extends Controller
 {
-      // Display a list of all family heads with family member count
+     
       protected $statesAndCities = [
         'Maharashtra' => ['Aurangabad','Mumbai', 'Pune', 'Nagpur', 'Nashik'],
             'Madhya Pradesh' => ['Indore', 'Bhopal', 'Gwalior', 'Jabalpur'],
             'Gujarat' => ['Ahmedabad', 'Surat', 'Vadodara', 'Rajkot'],
             'Delhi' => ['New Delhi', 'Dwarka', 'Janakpuri', 'Rohini']
     ];
-      public function index()
+
+     // Display a list of all family heads with family member count
+    public function index()
       { 
           $familyHeads = FamilyHead::withCount('familyMembers')->paginate(6);
           return view('family.index', compact('familyHeads'));
@@ -59,7 +61,7 @@ class FamilyHeadController extends Controller
     { 
         $familyHead = FamilyHead::findOrFail($familyHeadId);
 
-    // Paginate family members for the specific family head
+        // Paginate family members for the specific family head
          $familyMembers = $familyHead->familyMembers()->paginate(5); // 5 members per page
         return view('family.show', compact('familyHead', 'familyMembers'));
     }
