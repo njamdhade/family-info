@@ -56,23 +56,19 @@ class FamilyHeadController extends Controller
   
     // Display family head details along with family members
     public function show($familyHeadId)
-    {
-        // $familyHead = FamilyHead::with('familyMembers')->findOrFail($id);
-        // $familyHead = FamilyHead::findOrFail($familyHeadId);
-        // $familyMembers = FamilyMember::where(['family_head_id'=>$familyHeadId], )->paginate(2);
+    { 
         $familyHead = FamilyHead::findOrFail($familyHeadId);
 
     // Paginate family members for the specific family head
-         $familyMembers = $familyHead->familyMembers()->paginate(2); // 5 members per page
+         $familyMembers = $familyHead->familyMembers()->paginate(5); // 5 members per page
         return view('family.show', compact('familyHead', 'familyMembers'));
     }
+
+    //// get cities by state
     public function getCities(Request $request)
     {
-      
-
         $state = $request->input('state');
         $cities = $this->statesAndCities[$state] ?? [];
-
         return response()->json($cities);
     }
 }
