@@ -29,13 +29,12 @@
                     @endif
                 </div>
                 <p><strong>Name:</strong> {{ $familyHead->name }} {{ $familyHead->surname }}</p>
-                <p><strong>Birth Date:</strong> {{ $familyHead->birth_date }}</p>
+                
                 <p><strong>Mobile No:</strong> {{ $familyHead->mobile_no }}</p>
                 <p><strong>Address:</strong> {{ $familyHead->address }}, {{ $familyHead->city }}, {{ $familyHead->state }},
                     {{ $familyHead->pincode }}</p>
-                <p><strong>Marital Status:</strong> {{ ucfirst($familyHead->marital_status) }}</p>
-                <p><strong>Wedding Date:</strong> {{ $familyHead->wedding_date ?? 'N/A' }}</p>
-                <p><strong>Hobbies:</strong> {{ implode(', ', json_decode($familyHead->hobbies)) }}</p>
+                <p><strong>Marital Status:</strong> {{ ucfirst($familyHead->marital_status) }}</p> 
+                
             </div>
         </div>
 

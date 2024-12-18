@@ -13,7 +13,7 @@ class FamilyMember extends Model
         'education', 'photo'
     ];
     protected $casts = [
-        'm_birthdate' => 'date',
+        'm_birth_date' => 'date',
         'wedding_date' => 'date'
     ];
     public function familyHead(){

@@ -5,13 +5,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FamilyHeadController;
 use App\Http\Controllers\FamilyMemberController;
 
-Route::redirect('/', '/family', 301);
+// Route::redirect('/', '/family', 301);
+Route::get('/', [FamilyHeadController::class, 'index'])->name('family.head.index');
 Route::prefix('family')->group(function () {
     // Family head routes
     Route::get('create', [FamilyHeadController::class, 'create'])->name('family.head.create');
     Route::post('store', [FamilyHeadController::class, 'store'])->name('family.head.store');
     
-    Route::get('/', [FamilyHeadController::class, 'index'])->name('family.head.index');
     Route::get('show/{id}', [FamilyHeadController::class, 'show'])->name('family.head.show');
 
     Route::get("getcities",[FamilyHeadController::class,'getCities'])->name('family.getcities');

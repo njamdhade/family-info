@@ -28,11 +28,11 @@
                 @endif
             </div>
             <p><strong>Name:</strong> {{ $familyHead->name }} {{ $familyHead->surname }}</p>
-            <p><strong>Birth Date:</strong> {{ $familyHead->birth_date }}</p>
+            <p><strong>Birth Date:</strong>{{ \Carbon\Carbon::parse($familyHead->birth_date)->format('d-m-Y') }}</p>
             <p><strong>Mobile No:</strong> {{ $familyHead->mobile_no }}</p>
             <p><strong>Address:</strong> {{ $familyHead->address }}, {{ $familyHead->city }}, {{ $familyHead->state }}, {{ $familyHead->pincode }}</p>
             <p><strong>Marital Status:</strong> {{ ucfirst($familyHead->marital_status) }}</p>
-            <p><strong>Wedding Date:</strong> {{ $familyHead->wedding_date ?? 'N/A' }}</p>
+            <p><strong>Wedding Date:</strong> {{ \Carbon\Carbon::parse($familyHead->wedding_date)->format('d-m-Y') ?? 'N/A' }}</p>
             <p><strong>Hobbies:</strong> {{ implode(', ', json_decode($familyHead->hobbies)) }}</p>
         </div>
     </div>
@@ -68,7 +68,7 @@
                                 @endif
                             </td>
                             <td>{{ $member->name }}</td>
-                            <td>{{ $member->m_birth_date }}</td>
+                            <td>{{  \Carbon\Carbon::parse($member->m_birth_date)->format('d-m-Y') }} </td>
                             <td>{{ ucfirst($member->marital_status) }}</td>
                             <td>{{ $member->wedding_date ?? 'N/A' }}</td>
                             <td>{{ $member->education }}</td>
