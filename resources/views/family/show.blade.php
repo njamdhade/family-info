@@ -3,13 +3,13 @@
 @section('content') 
 
   
-<div class="container">
+<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
     <!-- Family Head Details -->
     @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        {{ $message }}
-    </div>
-@endif
+        <div class="alert alert-success">
+            {{ $message }}
+        </div>
+    @endif
     <div class="card mb-4 w-8/12">
         <div class="card-header flex justify-between items-center">
             <h3 class="text-xl font-medium capitalize">{{ $familyHead->name }} {{ $familyHead->surname }}'s Details</h3>

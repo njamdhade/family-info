@@ -3,14 +3,14 @@
 @section('content')
     
     
-   <div class="container mb-7">
+<div class="container max-w-7xl mx-auto  sm:px-6 lg:px-8 mb-7">
 <div class="card-header  flex justify-end items-center">
     
    <a class="btn py-2 px-3 bg-cyan-700 hover:bg-cyan-500 text-white " href="{{ route('family.head.show',  $familyHead->id) }}"><i class="fa fa-users"></i> View Family Members</a>
 
 </div>
 </div> 
-    <div class="container flex gap-10">
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 flex gap-10">
         <!-- Family Head Details -->
         <div class="card w-4/12 mb-4">
             <div class="card-header">

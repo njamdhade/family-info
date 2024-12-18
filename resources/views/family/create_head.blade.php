@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="row max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
             <div class="col-lg-7">
                
                     <div class="w-full flex justify-between my-3">
