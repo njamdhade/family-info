@@ -5,6 +5,7 @@ use App\Models\FamilyHead;
 use App\Models\FamilyMember;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
  
 class FamilyHeadController extends Controller
 {
@@ -66,6 +67,74 @@ class FamilyHeadController extends Controller
         return view('family.show', compact('familyHead', 'familyMembers'));
     }
 
+    public function edit($familyHeadId){
+        $familyHead = FamilyHead::findOrFail($familyHeadId);
+        $statesAndCities = $this->statesAndCities;
+        return view('family.edit_head', compact('familyHead','statesAndCities'));
+    }
+
+    public function update(FamilyHeadRequest $request, $id)
+{
+    // Find the existing family head by ID
+    $familyHead = FamilyHead::findOrFail($id);
+
+    // Prepare hobbies as a JSON array
+    $hobbies = $request->hobbies ? json_encode($request->hobbies) : null;
+
+    // Handle the photo upload (only if a new photo is uploaded)
+    $photoPath = $familyHead->photo; // Default to current photo
+    if ($request->hasFile('photo')) {
+        // Delete the old photo if it exists
+        if ($familyHead->photo) {
+            Storage::disk('public')->delete($familyHead->photo);
+        }
+        // Store the new photo
+        $photoPath = $request->file('photo')->store('photos', 'public');
+    }
+
+    $weddingDate = null;
+    if ( strtolower($request->marital_status) == 'married' && $request->wedding_date) {
+        $weddingDate = $request->wedding_date;
+    }
+    // Update the family head data
+ 
+    $familyHead->update([
+        'name' => $request->name,
+        'surname' => $request->surname,
+        'birth_date' => $request->birth_date,
+        'mobile_no' => $request->mobile_no,
+        'address' => $request->address,
+        'state' => $request->state,
+        'city' => $request->city,
+        'pincode' => $request->pincode,
+        'marital_status' => $request->marital_status,
+        'wedding_date' => $weddingDate,
+        'hobbies' => $hobbies,
+        'photo' => $photoPath,
+    ]);
+
+        return redirect()->route('family.head.index')->with('success', 'Family head updated successfully.');
+    }
+ 
+    public function delete($id)
+    {
+        // Find the family head by ID
+        $familyHead = FamilyHead::findOrFail($id);
+    
+        // Optional: Delete the photo if it exists
+        if ($familyHead->photo) {
+            Storage::disk('public')->delete($familyHead->photo);
+        }
+    
+        // Delete the family head record, cascade will handle family members
+        $familyHead->delete();
+    
+        // Redirect with a success message
+        return redirect()->route('family.head.index')->with('success', 'Family head and associated members deleted successfully.');
+    
+}
+
+
     //// get cities by state
     public function getCities(Request $request)
     {
@@ -73,4 +142,5 @@ class FamilyHeadController extends Controller
         $cities = $this->statesAndCities[$state] ?? [];
         return response()->json($cities);
     }
+    
 }

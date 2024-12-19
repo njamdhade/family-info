@@ -34,7 +34,9 @@
             <p><strong>Mobile No:</strong> {{ $familyHead->mobile_no }}</p>
             <p><strong>Address:</strong> {{ $familyHead->address }}, {{ $familyHead->city }}, {{ $familyHead->state }}, {{ $familyHead->pincode }}</p>
             <p><strong>Marital Status:</strong> {{ ucfirst($familyHead->marital_status) }}</p>
-            <p><strong>Wedding Date:</strong> {{ \Carbon\Carbon::parse($familyHead->wedding_date)->format('d-m-Y') ?? 'N/A' }}</p>
+            @if($familyHead->wedding_date)
+            <p><strong>Wedding Date:</strong> {{ ($familyHead->wedding_date)? (\Carbon\Carbon::parse($familyHead->wedding_date)->format('d-m-Y') ?? 'N/A'):'NA' }}</p>
+            @endif
             <p><strong>Hobbies:</strong> {{ implode(', ', json_decode($familyHead->hobbies)) }}</p>
         </div>
     </div>
@@ -72,7 +74,7 @@
                             <td> {{ $member->name }}</td>
                             <td> {{  \Carbon\Carbon::parse($member->m_birth_date)->format('d-m-Y') }} </td>
                             <td> {{ ucfirst($member->marital_status) }}</td>
-                            <td> {{  \Carbon\Carbon::parse($member->wedding_date)->format('d-m-Y') ?? 'N/A' }}</td>
+                            <td> {{ ($member->wedding_date)? (\Carbon\Carbon::parse($member->wedding_date)->format('d-m-Y') ?? 'N/A'):'N/A' }}</td>
                             <td> {{ $member->education }}</td>
                         </tr>
                         @endforeach

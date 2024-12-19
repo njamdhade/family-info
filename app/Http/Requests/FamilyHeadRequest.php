@@ -25,7 +25,12 @@ class FamilyHeadRequest extends FormRequest
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'birth_date' => 'required|date|before:' . now()->subYears(21)->format('Y-m-d'),
-            'mobile_no' => 'required|digits:10|unique:family_heads,mobile_no',
+            // 'mobile_no' => 'required|digits:10|unique:family_heads,mobile_no',
+            'mobile_no' => [
+            'required',
+            'digits:10', 
+            'unique:family_heads,mobile_no,' . $this->route('id') // Unique, except for the current record
+        ],
             'address' => 'required|string|max:255',
             'state' => 'required|string|max:255',
             'city' => 'required|string|max:255',
