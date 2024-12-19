@@ -230,7 +230,8 @@ function validateForm() {
         $('#state_edit').trigger("change"); 
         setTimeout(() => {        
             $('#city').val("<?=$familyHead->city?>");
-            $("input[name='marital_status']").trigger('change');      
+            $("input[name='marital_status'][value='<?=ucwords($familyHead->marital_status)?>']").prop('checked', true).trigger('change');
+    
         }, 250);
     }, 100);
     

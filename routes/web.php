@@ -22,5 +22,4 @@ Route::prefix('family')->group(function () {
     // Family member routes
     Route::get('member/{familyHeadId}/create', [FamilyMemberController::class, 'create'])->name('family.member.create');
     Route::post('member/{familyHeadId}/store', [FamilyMemberController::class, 'store'])->name('family.member.store');
-    Route::get('member/{familyHeadId}/edit/{id}', [FamilyMemberController::class, 'edit'])->name('family.member.edit');
-});
+ });

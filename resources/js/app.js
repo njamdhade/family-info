@@ -5,7 +5,8 @@ $(document).ready(function() {
 
     // Show wedding date field only for married individuals
     $("input[name='marital_status']").on("change", function() {
-        if ($(this).val() === "Married") {
+         
+        if ($(this).val() === "Married" || $(this).val() === "married") {
             $("#wedding-date-section").slideDown();
         } else {
             $("#wedding-date-section").slideUp();
