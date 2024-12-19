@@ -21,7 +21,7 @@ class FamilyHeadFactory extends Factory
                 'name' => $this->faker->firstName(), // Ensure 'name' is populated
                 'surname' => $this->faker->lastName(),
                 'birth_date' => $this->faker->date(),
-                'mobile_no' => $this->faker->phoneNumber(),
+                'mobile_no' => $this->faker->numberBetween(6000000000, 9999999999),
                 'address' => $this->faker->address(),
                 'state' => $this->faker->randomElement(['Maharashtra', 'Gujarat', 'Delhi', 'Madhya Pradesh']),
                 'city' => $this->faker->randomElement(['Aurangabad', 'mumbai', 'Pune', 'Nanded']),
