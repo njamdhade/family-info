@@ -20,7 +20,7 @@ class FamilyHeadController extends Controller
      // Display a list of all family heads with family member count
     public function index()
       { 
-          $familyHeads = FamilyHead::withCount('familyMembers')->paginate(6);
+          $familyHeads = FamilyHead::withCount('familyMembers') ->orderBy('created_at', 'desc')->paginate(6);
           return view('family.index', compact('familyHeads'));
       }
     // Show the form to create a new family head
@@ -63,7 +63,7 @@ class FamilyHeadController extends Controller
         $familyHead = FamilyHead::findOrFail($familyHeadId);
 
         // Paginate family members for the specific family head
-         $familyMembers = $familyHead->familyMembers()->paginate(5); // 5 members per page
+         $familyMembers = $familyHead->familyMembers()->orderBy('created_at', 'desc')->paginate(5); // 5 members per page
         return view('family.show', compact('familyHead', 'familyMembers'));
     }
 
