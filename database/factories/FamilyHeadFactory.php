@@ -29,7 +29,7 @@ class FamilyHeadFactory extends Factory
                 'marital_status' => $this->faker->randomElement(['married', 'unmarried']),
                 'wedding_date' => $this->faker->optional()->date(),
                 'hobbies' => json_encode($this->faker->randomElements(['Reading', 'Traveling', 'Gardening', 'Cooking'], 2)),
-                'photo' => null,
+                'photo' => $this->faker->imageUrl(640, 480, 'people', true, 'Faker'),
             ];
         
     }

@@ -21,7 +21,7 @@
                     <!-- Placeholder for family photo -->
                     @if ($familyHead->photo)
                         <img class="h-32 w-32 object-cover rounded-full" src="{{ asset('storage/' . $familyHead->photo) }}"
-                            alt="Family Head Photo">
+                        onerror="this.onerror=null;this.src='{{ $familyHead->photo }}';"   alt="Family Head Photo">
                     @else
                         <div class="h-32 w-32 rounded-full bg-gray-300 flex items-center justify-center">
                             <span class="text-white text-xl">No Image</span>

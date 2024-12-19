@@ -10,12 +10,13 @@
     <hr class="mb-6">
     <!-- List of Family Heads -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        @if(count($familyHeads) > 0)
         @foreach ($familyHeads as $familyHead)
             <div class="bg-white shadow-lg rounded-lg overflow-hidden border border-gray-200">
                 <div class="flex justify-center items-center bg-gray-100 h-40">
                     <!-- Placeholder for family photo -->
                     @if ($familyHead->photo)
-                        <img class="h-32 w-32 object-cover rounded-full" src="{{ asset('storage/' . $familyHead->photo) }}" alt="Family Head Photo">
+                        <img class="h-32 w-32 object-cover rounded-full" src="{{ asset('storage/' . $familyHead->photo) }}" onerror="this.onerror=null;this.src='{{ $familyHead->photo }}';"  alt="Family Head Photo">
                     @else
                         <div class="h-32 w-32 rounded-full bg-gray-300 flex items-center justify-center">
                             <span class="text-white text-xl">No Image</span>
@@ -31,13 +32,15 @@
                     
                     <!-- Display Member Count -->
                     <div class="mt-4">
-                        <a href="{{ route('family.head.show', $familyHead->id) }}" class=" px-2">Members:  <span class="px-2 py-1 font-semibold  text-white hover:text-blue-100 font-medium text-md bg-slate-800 hover:bg-red-800 rounded-full"> {{ $familyHead->family_members_count }}</span></a>
+                        <a href="{{ route('family.head.show', $familyHead->id) }}" class=" px-2">Total Members:  <span class="px-2 py-1 font-semibold  text-white hover:text-blue-100 font-medium text-md bg-slate-800 hover:bg-red-800 rounded-full"> {{ $familyHead->family_members_count }}</span></a>
                     </div>
                   
                 </div>
             </div>
         @endforeach
-
+@else
+<h2>NO DATA FOUND</h2>
+@endif
     </div>
     <div class="d-flex justify-content-center mt-5 pagination-div">
         {{ $familyHeads->links() }}

@@ -22,7 +22,7 @@
             <div class="flex justify-start items-start mb-6">
                 <!-- Placeholder for family photo -->
                 @if ($familyHead->photo)
-                    <img class="h-32 w-32 object-cover rounded-full" src="{{ asset('storage/' . $familyHead->photo) }}" alt="Family Head Photo">
+                    <img class="h-32 w-32 object-cover rounded-full" src="{{ asset('storage/' . $familyHead->photo) }}" onerror="this.onerror=null;this.src='{{ $familyHead->photo }}';"  alt="Family Head Photo">
                 @else
                     <div class="h-32 w-32 rounded-full bg-gray-300 flex items-center justify-center">
                         <span class="text-white text-xl">No Image</span>
@@ -30,7 +30,7 @@
                 @endif
             </div>
             <p><strong>Name:</strong> {{ $familyHead->name }} {{ $familyHead->surname }}</p>
-            <p><strong>Birth Date:</strong>{{ \Carbon\Carbon::parse($familyHead->birth_date)->format('d-m-Y') }}</p>
+            <p><strong>Birth Date:</strong> {{ \Carbon\Carbon::parse($familyHead->birth_date)->format('d-m-Y') }}</p>
             <p><strong>Mobile No:</strong> {{ $familyHead->mobile_no }}</p>
             <p><strong>Address:</strong> {{ $familyHead->address }}, {{ $familyHead->city }}, {{ $familyHead->state }}, {{ $familyHead->pincode }}</p>
             <p><strong>Marital Status:</strong> {{ ucfirst($familyHead->marital_status) }}</p>
@@ -69,11 +69,11 @@
                                 </div>
                                 @endif
                             </td>
-                            <td>{{ $member->name }}</td>
-                            <td>{{  \Carbon\Carbon::parse($member->m_birth_date)->format('d-m-Y') }} </td>
-                            <td>{{ ucfirst($member->marital_status) }}</td>
+                            <td> {{ $member->name }}</td>
+                            <td> {{  \Carbon\Carbon::parse($member->m_birth_date)->format('d-m-Y') }} </td>
+                            <td> {{ ucfirst($member->marital_status) }}</td>
                             <td> {{  \Carbon\Carbon::parse($member->wedding_date)->format('d-m-Y') ?? 'N/A' }}</td>
-                            <td>{{ $member->education }}</td>
+                            <td> {{ $member->education }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -82,7 +82,7 @@
                     {{ $familyMembers->links() }}
                 </div>
             @else
-                <p>No family members added yet.</p>
+                <p> No family members added yet. </p>
             @endif
         </div>
     </div>
